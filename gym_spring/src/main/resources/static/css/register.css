@@ -1,0 +1,58 @@
+body{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #f1f1f3;
+}
+fieldset{
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.75em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.75em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: none;
+    border-color: threedface;
+    border-image: initial;
+}
+
+.register_body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.register_title{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    color: #1890ff;
+    font-weight: 700;
+}
+
+.buttons{
+    text-align: center;
+}
+.buttons input{
+    color: white;
+    background-color: #1890ff;
+    border-radius: 5px;
+    padding: 3px 10px 3px 10px;
+    margin-top: 10px;
+}
+
+.errormessage{
+    text-align: center;
+}
+
+.login_content{
+    background-color: white;
+}

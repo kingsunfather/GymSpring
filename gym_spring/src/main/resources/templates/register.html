@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link type="text/css" rel="stylesheet" href="/css/register.css"/>
+</head>
+<body>
+    <div class="register_body">
+        <div class="login_content">
+            <div class="register_title">
+                Register
+            </div>
+            <div style="margin: 15px 30px;">
+                <form th:action="@{/addUser}" method="post" th:object="${user}">
+                    <fieldset>
+                        <div>
+                            <label>名字:</label>
+                            <input type="text" id="name" name="name" tabindex="1">
+                        </div>
+                        <div>
+                            <label>年龄:</label>
+                            <input type="number" id="age" name="age" tabindex="2">
+                        </div>
+                        <div>
+                            <label>电话:</label>
+                            <input type="tel" id="mobile" name="mobile" tabindex="3">
+                        </div>
+                        <div>
+                            <label>性别:</label>
+                            <select id="sex" name="sex">
+                                <option value ="male">男</option>
+                                <option value ="famale">女</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>密码:</label>
+                            <input type="password" name="password">
+                        </div>
+                        <div class="buttons">
+                            <input id="submit" type="submit" value="注册" tabindex="5">
+                            <input id="login" type="button" onclick="window.location.href='/'" value="登陆" tabindex="6">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

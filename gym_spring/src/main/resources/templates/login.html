@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link type="text/css" rel="stylesheet" href="/css/register.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/reset.css"/>
+</head>
+<body>
+
+<div class="register_body">
+    <div class="login_content">
+        <div class="register_title">
+            Login
+        </div>
+        <div style="margin:15px 30px;">
+            <form method="post" th:action="@{/login}" id="loginform">
+                <fieldset>
+                    <div>
+                        <label>账号:</label>
+                        <input type="number" id="id" name="id" tabindex="1" th:value="${id}">
+                    </div>
+                    <div>
+                        <label>密码:</label>
+                        <input type="password" id="password" name="password" tabindex="2">
+                        <div class="errormessage">
+                            <span style="color: red;" th:if="${message}">账号或密码错误</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <input id="login" type="submit" value="登陆" tabindex="5">
+                        <input id="register" type="button" onclick="window.location.href='/register'" value="注册">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
