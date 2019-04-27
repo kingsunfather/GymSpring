@@ -9,15 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.springboot</groupId>
-    <artifactId>jpa_demo</artifactId>
+    <artifactId>gym_spring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>jpa_demo</name>
+    <name>gym_spring</name>
     <description>Demo project for Spring Boot</description>
 
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
