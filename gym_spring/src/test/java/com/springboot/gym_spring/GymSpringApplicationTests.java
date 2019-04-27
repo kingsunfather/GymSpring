@@ -1,4 +1,4 @@
-package com.springboot.jpa_demo;
+package com.springboot.gym_spring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
