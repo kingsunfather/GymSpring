@@ -4,6 +4,8 @@ package com.springboot.jpa_demo.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.springboot.jpa_demo.datasource1.domain.Gym;
 import com.springboot.jpa_demo.datasource1.service.GymService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
@@ -22,6 +24,7 @@ public class GymController {
     GymService gymService;
 
 
+    @ApiOperation(value="获取健身房的所有信息", notes="从第一个数据源获取健身房的所有信息")
     @GetMapping("/allgym")
     @Cacheable(key = "targetClass + methodName")
     public JSONObject allgym(){
@@ -33,7 +36,7 @@ public class GymController {
     @PostMapping("/updateGym")
     @CachePut(key = "targetClass + methodName")
     public JSONObject updateGym(@RequestBody Gym gym){
-       return gymService.update(gym);
+        return gymService.update(gym);
     }
 
     @PostMapping("/findByIdOrName")
