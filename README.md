@@ -9,4 +9,4 @@
 1. 使用Jpa技术，实现多表查询，分页查询，配置druid多数据源
 2. 使用Cache缓存
 3. 使用thymeleaf构建页面
-4. 使用swagger生成restful接口界面  
+4. 使用swagger生成restful接口界面，默认的api界面地址在http://localhost:8080/swagger-ui.html#/  
