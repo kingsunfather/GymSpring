@@ -6,7 +6,7 @@
 3. JDBC连接Mysql的用户名为root，密码为123456，详情请见yaml配置文件
 4. 运行环境是Java8，IDE使用Intellij，需要在Intellij里面下载lombok插件
 ## 技术说明
-1. 使用jpa技术，实现多表查询，分页查询，配置druid多数据源
-2. 使用cache缓存
+1. 使用Jpa技术，实现多表查询，分页查询，配置druid多数据源
+2. 使用Cache缓存
 3. 使用thymeleaf构建页面
 4. 使用swagger生成restful接口界面  
