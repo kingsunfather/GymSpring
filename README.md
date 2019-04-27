@@ -1,4 +1,4 @@
-## gym_springboot
+## GymSpringboot
 使用springboot实现gym
 ## 文件夹说明
 1. jpa_demo是springboot工程文件的根目录  
