@@ -1,7 +1,7 @@
 # GymSpringboot
 使用springboot实现gym
 
-## 组员
+# 组员
 
 + 刘如日 16301157  
 + 龙灏天 16301158  
