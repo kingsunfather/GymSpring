@@ -37,12 +37,13 @@ public class User implements Serializable {
     @LastModifiedDate
     private Date updateAt;
 
-    public User(String name, String sex, String mobile, int age, String password){
+    public User(String name, String sex, String mobile, int age, String password, List<Gym> gymList){
         this.name=name;
         this.sex=sex;
         this.mobile=mobile;
         this.age=age;
         this.password=password;
+        this.GymList=gymList;
     }
 
     public User(){}

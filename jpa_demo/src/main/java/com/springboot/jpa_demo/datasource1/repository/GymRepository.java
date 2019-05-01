@@ -26,15 +26,12 @@ public interface GymRepository extends JpaRepository<Gym,Integer> {
     Gym saveAndFlush(Gym gym);
     Gym getOne(Integer gymId);
 
-//    @Transactional(timeout = 10)
     @Query(nativeQuery = true,value = "select gym.id as gymId ,gym.name as gymName, trainer.id as trainerId,trainer.name as trainerName " +
             "from gym " +
             "left join gym_trainer on gym_trainer.gym_id=gym.id " +
             "left join trainer on trainer.id=gym_trainer.trainer_id " +
             "where gym.id=?1")
     List<JSONObject> getGymTrainer(String id);
-    List<Gym> findByNameContainingOrderById(String name);
-    List<Gym> findFirst10ById(String id);
 
 
 }

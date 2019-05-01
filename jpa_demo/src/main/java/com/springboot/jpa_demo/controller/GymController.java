@@ -6,6 +6,7 @@ import com.springboot.jpa_demo.datasource1.domain.Gym;
 import com.springboot.jpa_demo.datasource1.service.GymService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
@@ -25,45 +26,50 @@ public class GymController {
 
 
     @ApiOperation(value="获取健身房的所有信息", notes="从第一个数据源获取健身房的所有信息")
-    @GetMapping("/allgym")
+    @GetMapping("/gym/all")
     @Cacheable(key = "targetClass + methodName")
-    public JSONObject allgym(){
+    public JSONObject getAllGym(){
         JSONObject res=new JSONObject();
         res.put("data",gymService.getallGym());
         return res;
     }
 
-    @PostMapping("/updateGym")
+    @PostMapping("/gym/update")
     @CachePut(key = "targetClass + methodName")
     public JSONObject updateGym(@RequestBody Gym gym){
         return gymService.update(gym);
     }
 
-    @PostMapping("/findByIdOrName")
-    public JSONObject findByIdOrName(String id,String name){
-        return gymService.findByIdOrName(id,name);
-    }
-
-    @PostMapping("/findByNameLike")
-    public JSONObject findByNameLike(String name){
+    @PostMapping("/gym/findByNameLike/{name}")
+    public JSONObject findByNameLike(@PathVariable String name){
         return gymService.findByNameLike(name);
     }
 
-    @PostMapping("/findByNameContaining")
-    public JSONObject findByNameContaining(String name){
+    @PostMapping("/gym/findByNameContaining/{name}")
+    public JSONObject findByNameContaining(@PathVariable String name){
         return gymService.findByNameContaining(name);
     }
 
+    @PostMapping("/gym/{pageSize}/{pageNum}")
+    public JSONObject findAll(@PathVariable Integer pageSize,@PathVariable Integer pageNum){
+        JSONObject result=new JSONObject();
+        try {
+            System.out.println("pageSize: " + pageSize);
+            System.out.println("pageNum: " + pageNum);
+            Sort sort = new Sort(Sort.Direction.DESC, "id");
+            Pageable pageable = new PageRequest(pageNum, pageSize, sort);
+            result = gymService.findAll(pageable);
 
-    @PostMapping("/findAll")
-    public JSONObject findAll(int pageSize,int pageNum){
-        Sort sort=new Sort(Sort.Direction.DESC,"id");
-        Pageable pageable=new PageRequest(pageNum,pageSize,sort);
-        return gymService.findAll(pageable);
+        }catch (Exception e){
+            result.put("code",500);
+            return result;
+        }
+        result.put("code",200);
+        return result;
     }
 
-    @PostMapping("/getGymTrainerById")
-    public JSONObject getGymTrainerById(String id){
+    @PostMapping("/gym/trainer/{id}")
+    public JSONObject getGymTrainerById(@PathVariable String id){
         return gymService.getGymTrainer(id);
     }
 
