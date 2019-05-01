@@ -21,7 +21,7 @@
       - [1.3 系统功能](#13系统功能)
   - [2.JPA 细化要求](#2JPA细化要求)
       - [2.1 多表联查](#21多表联查)
-      - [2.2 多数据库源](#22多数据库源)
+      - [2.2 多数据库源DruiDB](#22多数据库源DruiDB)
       - [2.3 分页查询](#23分页查询)
       - [2.4 审计](#24审计)
   - [3.Cache 细化要求](#3Cache细化要求)
@@ -60,34 +60,40 @@
 
 + 登陆
     -
-    ![](/docImage/loginPage.png)
-    点击网址可以进入登陆页面，有两个输入框，分别输入账号密码可以登陆（内置账号admin/admin）即可以登陆。
+    ![](/docImage/loginPage.png)  
+    
+    点击网址可以进入登陆页面，有两个输入框，分别输入账号(注册完账户后会自动跳转到登录界面并分配用户id)，输入密码即可以登陆。
+    
 + 注册
     -
-    ![](/docImage/registerPage.png)
-    在密码输入框下方有一个“注册”小字，用户点击即可以弹出注册的悬浮框，用户填写相关信息后即可以成功注册。
+    ![](/docImage/registerPage.png)  
+    
+    在密码输入框下方有一个“注册”小字，用户点击即可以弹出注册的悬浮框，用户填写相关信息后即可以成功注册，注册完账户后会自动跳转到登录界面并分配用户id。
 + 查看体育馆信息
     -
-    ![](/docImage/personPage.png)
-    点击登陆按钮后就会跳转到主页，显示用户在注册的时候所填写的信息，右侧有个课程列表是用户所订阅的课程的简要信息。
+    ![](/docImage/mainPage.png)  
+    
+    点击登陆按钮后就会跳转到主页，显示用户在注册的时候所填写的信息，右侧有个课程列表是用户所订阅的课程的简要信息。  
     
 ## 2.JPA细化要求
 
 ### 2.1多表联查
 
-+ 多表联查主要体现在Gym实体与其他实体之间
++ 多表联查主要体现在Gym实体与其他实体之间  
 
-+ gym实体实现 trainer与gym为 ManyToOne
++ gym实体实现 trainer与gym为 ManyToOne  
 
-![](/docImage/gym_trainer.png)
-![](/docImage/trainer_gym.png)
+![](/docImage/gym_trainer.png)  
 
-+ user实体实现 gym与user为 ManyToMany
+![](/docImage/trainer_gym.png)  
 
-![](/docImage/gym_user.png)
-![](/docImage/user_gym.png)
++ user实体实现 gym与user为 ManyToMany  
 
-### 2.2多数据库源
+![](/docImage/gym_user.png)  
+
+![](/docImage/user_gym.png)  
+
+### 2.2多数据库源DruiDB
 
 使用两个基于MySQL的数据库源 application.yaml配置如下
 
@@ -107,7 +113,8 @@
           driver-class-name: com.mysql.jdbc.Driver
         platform: mysql
 
-并且在配置文件中配置相应启动项
+并且在配置文件中配置相应启动项  
+
 ![](docImage/mutil_datasource.png)
 
 
@@ -130,24 +137,17 @@ api设计时候加入pageSize和pageNum选项
 ## 3.Cache细化要求
 
 ### 3.1实现缓存加速功能
-
-+ 查看课程列表
-    -
-    在函数前添加注解
-    @Cacheable(value = "courseList")、
-    系统自动生成键值对存入redis缓存中，加速数据的查询。
     
-    
-+ 查看课程详情
-    -
++ 查看体育馆详情
     在函数前添加注解
-    @GetMapping("/gym/all")
-    @Cacheable(key = "targetClass + methodName")
-    public JSONObject getAllGym(){
-        JSONObject res=new JSONObject();
-        res.put("data",gymService.getallGym());
-        return res;
-    }
+    
+        @GetMapping("/gym/all")
+        @Cacheable(key = "targetClass + methodName")
+        public JSONObject getAllGym(){
+            JSONObject res=new JSONObject();
+            res.put("data",gymService.getallGym());
+            return res;
+        }
 
 ## 4.使用thymeleaf构建页面
 ## 5.集成Swagger文档
