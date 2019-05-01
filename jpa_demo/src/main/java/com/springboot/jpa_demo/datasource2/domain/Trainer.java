@@ -1,6 +1,4 @@
-package com.springboot.jpa_demo.datasource1.domain;
-
-
+package com.springboot.jpa_demo.datasource2.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONObject addUser(User user) {
         JSONObject res=new JSONObject();
-        Long randomId=System.currentTimeMillis();
-        user.setId(randomId);
+//        Long randomId=System.currentTimeMillis();
+//        user.setId(randomId);
         User user1 =userRepositpry.save(user);
 
         res.put("data",user1);

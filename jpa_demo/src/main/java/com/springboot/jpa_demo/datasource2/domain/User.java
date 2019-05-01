@@ -1,5 +1,4 @@
-package com.springboot.jpa_demo.datasource1.domain;
-
+package com.springboot.jpa_demo.datasource2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,29 +10,32 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
-public class Trainer implements Serializable {
-    @Id
-    private String id;
-    private String name;
-    private String age;
-    private String headpic;
-    private String introduce;
-    private String phone;
+public class User implements Serializable {
 
-    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)
-    @JoinColumn(name="gym_id")
-    private Gym gym;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private String sex;
+    private String mobile;
+    private int age;
+    private String password;
+
+    @ManyToMany
+    @JoinTable(name = "user_gym",joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "gym_id"))
+    private List<Gym> GymList;
 
     @CreatedDate
     private Date createAt;
 
     @LastModifiedDate
     private Date updateAt;
-
 }

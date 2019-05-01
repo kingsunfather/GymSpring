@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-
 @Slf4j
 @Configuration
 @ServletComponentScan

@@ -1,0 +1,2 @@
+insert into user values (1,10,current_timestamp,'18810959899','kingsun','111111','male',current_timestamp);
+insert into user values (2,11,current_timestamp,'18810959822','kingsundad','111111','female',current_timestamp);

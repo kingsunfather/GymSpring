@@ -5,11 +5,17 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
+
+
     secondary:
       url: jdbc:mysql://localhost:3306/spring_study2?useSSL=false
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+
+
+
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
@@ -21,11 +27,13 @@ spring:
         show-sql: true
         format-sql: true
         use-sql-comments: true
+        hbm2ddl:
+          auto: update
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
     mode: HTML5
-    cache: false
+    cache: true
 
 server:
   port: 8080
