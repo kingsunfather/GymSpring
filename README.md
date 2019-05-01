@@ -51,10 +51,16 @@
 ### 1.2UML设计类图
 
 **Controller设计**
-
+controller只负责View层的操作，负责处理Http的Request与Response  
+![](/docImage/controllerDesign.png)  
+ 
 **Service设计**
+所有的业务逻辑都写在Service(接口，ServiceImp（实现）)层里面  
+![](/docImage/serviceDesign.png)  
 
 **Repository设计**
+继承Jpa的Repo，根据需求重写一些方法
+![](/docImage/repoDesign.png)  
 
 ### 1.3系统功能
 
@@ -129,6 +135,10 @@ api设计时候加入pageSize和pageNum选项
             Sort sort = new Sort(Sort.Direction.DESC, "id");
             Pageable pageable = new PageRequest(pageNum, pageSize, sort);
             return gymService.findAll(pageable);
+
+使用Postman测试的结果如下  
+
+![](docImage/postmanTestPageQuery.png)  
 
 ### 2.4审计
 
