@@ -1,9 +1,10 @@
 package com.springboot.jpa_demo.datasource1.repository;
 
 import com.springboot.jpa_demo.datasource1.domain.Gym;
+import io.swagger.models.auth.In;
 import org.springframework.data.repository.Repository;
 
-public interface GymRepository3 extends Repository<Gym,Long> {
+public interface GymRepository3 extends Repository<Gym, Integer> {
 
     /**
      * steos

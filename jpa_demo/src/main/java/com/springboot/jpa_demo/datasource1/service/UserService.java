@@ -7,7 +7,7 @@ public interface UserService {
 
     public JSONObject addUser(User user);
 
-    public JSONObject login(Long id,String password);
+    public JSONObject login(int id,String password);
 
-    public User findUserById(String userId);
+    public User findUserById(int userId);
 }

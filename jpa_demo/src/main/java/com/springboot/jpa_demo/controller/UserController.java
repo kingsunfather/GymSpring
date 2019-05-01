@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ModelAndView login(Long id,String password){
+    public ModelAndView login(int id,String password){
         ModelAndView modelAndView;
         JSONObject jsonObject=userService.login(id,password);
         if(jsonObject.get("code").equals(200)){

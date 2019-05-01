@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JSONObject login(Long id,String password) {
+    public JSONObject login(int id,String password) {
         JSONObject res=new JSONObject();
         User user=userRepositpry.findById(id);
         if(user!=null&&user.getPassword().equals(password)){
@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User findUserById(String userId){
-        return userRepositpry.findById(Long.parseLong(userId));
+    public User findUserById(int userId){
+        return userRepositpry.findById(userId);
     }
 
 }
