@@ -8,19 +8,21 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface GymService {
-    public List<Gym> getallGym();
+    List<Gym> getallGym();
 
-    public JSONObject update(Gym gym);
+    JSONObject update(Gym gym);
 
-    public JSONObject findByIdOrName(String id,String name);
+    JSONObject findByIdOrName(String id,String name);
 
-    public JSONObject findByNameLike(String name);
+    JSONObject findByNameLike(String name);
 
-    public JSONObject findByNameContaining(String name);
+    JSONObject findByNameContaining(String name);
 
-    public JSONObject findByNameIn(Collection name);
+    JSONObject findByNameIn(Collection name);
 
     JSONObject findAll(Pageable pageable);
 
     JSONObject getGymTrainer(String id);
+
+    JSONObject addGym(Gym gym);
 }

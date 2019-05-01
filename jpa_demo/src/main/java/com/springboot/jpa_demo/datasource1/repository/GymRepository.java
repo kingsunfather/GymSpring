@@ -16,12 +16,15 @@ import java.util.List;
 
 public interface GymRepository extends JpaRepository<Gym,Integer> {
     @Lock(LockModeType.READ)
-    Gym findById(String id);
+    Gym findById(int id);
     List<Gym> findByIdOrName(String id, String name);
     List<Gym> findByNameLike(@Nullable String name);
     List<Gym> findByNameContaining(String name);
     List<Gym> findByNameIn(Collection name);
+
     Page<Gym> findAll(Pageable pageable);
+    Gym saveAndFlush(Gym gym);
+    Gym getOne(Integer gymId);
 
 //    @Transactional(timeout = 10)
     @Query(nativeQuery = true,value = "select gym.id as gymId ,gym.name as gymName, trainer.id as trainerId,trainer.name as trainerName " +
@@ -32,4 +35,6 @@ public interface GymRepository extends JpaRepository<Gym,Integer> {
     List<JSONObject> getGymTrainer(String id);
     List<Gym> findByNameContainingOrderById(String name);
     List<Gym> findFirst10ById(String id);
+
+
 }

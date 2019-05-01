@@ -46,6 +46,9 @@ public class UserController {
         ModelAndView modelAndView;
         JSONObject jsonObject=userService.login(id,password);
         if(jsonObject.get("code").equals(200)){
+            //自动加载测试数据
+
+
             String token= GetToken.getToken(id,password);
             System.out.println("token is "+token);
             modelAndView=new ModelAndView("mainpage");

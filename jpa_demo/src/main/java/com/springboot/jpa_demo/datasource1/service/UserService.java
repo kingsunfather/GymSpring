@@ -5,9 +5,9 @@ import com.springboot.jpa_demo.datasource1.domain.User;
 
 public interface UserService {
 
-    public JSONObject addUser(User user);
+    JSONObject addUser(User user);
 
-    public JSONObject login(int id,String password);
+    JSONObject login(int id,String password);
 
-    public User findUserById(int userId);
+    User findUserById(int userId);
 }

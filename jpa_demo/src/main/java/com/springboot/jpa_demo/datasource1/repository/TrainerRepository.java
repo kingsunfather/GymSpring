@@ -4,4 +4,6 @@ import com.springboot.jpa_demo.datasource1.domain.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TrainerRepository extends JpaRepository<Trainer,Integer> {
+    Trainer saveAndFlush(Trainer trainer);
+    Trainer getOne(Integer trainId);
 }

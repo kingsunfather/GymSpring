@@ -22,7 +22,7 @@ import java.util.List;
 public class Gym implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    private int id;
     private String name;
     private String location;
     private String phone;
@@ -38,4 +38,12 @@ public class Gym implements Serializable {
 
     @LastModifiedDate
     private Date updateAt;
+
+    public Gym(String name, String location, String phone){
+        this.name=name;
+        this.location=location;
+        this.phone=phone;
+    }
+
+    public Gym(){}
 }

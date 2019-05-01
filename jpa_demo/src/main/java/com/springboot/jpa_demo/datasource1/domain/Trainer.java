@@ -19,7 +19,8 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public class Trainer implements Serializable {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String name;
     private String age;
     private String headpic;
@@ -36,4 +37,15 @@ public class Trainer implements Serializable {
     @LastModifiedDate
     private Date updateAt;
 
+    public Trainer(String name, String age, String headpic, String introduce, String phone, Gym gym){
+        this.gym=gym;
+        this.name=name;
+        this.age=age;
+        this.headpic=headpic;
+        this.introduce=introduce;
+        this.phone=phone;
+
+    }
+
+    public Trainer(){}
 }

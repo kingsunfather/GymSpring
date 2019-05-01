@@ -2,8 +2,10 @@ package com.springboot.jpa_demo.datasource1.service.imp;
 
 import com.alibaba.fastjson.JSONObject;
 import com.springboot.jpa_demo.datasource1.domain.Gym;
+import com.springboot.jpa_demo.datasource1.domain.User;
 import com.springboot.jpa_demo.datasource1.repository.GymRepository;
 import com.springboot.jpa_demo.datasource1.service.GymService;
+import com.springboot.jpa_demo.utils.ConstantVar;
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +27,8 @@ public class GymServiceImp implements GymService {
     @Override
     public JSONObject update(Gym gym){
         JSONObject res=new JSONObject();
-        Gym valid=gymRepository.findById(gym.getId());
+        int id=gym.getId();
+        Gym valid=gymRepository.findById(id);
         if(valid!=null){
             gymRepository.save(gym);
             res.put("code",200);
@@ -85,4 +88,15 @@ public class GymServiceImp implements GymService {
     }
 
 
+    @Override
+    public JSONObject addGym(Gym gym) {
+        JSONObject res=new JSONObject();
+        Gym gym1 =gymRepository.save(gym);
+
+        res.put("data",gym1);
+        res.put("code", ConstantVar.SUCCESSFUL_CODE);
+        res.put("message",ConstantVar.SUCCESSFUL_MESSAGE);
+        return res;
+
+    }
 }
