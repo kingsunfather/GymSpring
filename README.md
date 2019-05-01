@@ -38,9 +38,9 @@
 
 总共有三个实体分别为Gym User Trainer
 
-+Gym和User的关系为manyToMany  
-+Gym和Trainer的关系为OneToMany  
-+Trainer和Gym的关系为ManyToOne  
++ Gym和User的关系为manyToMany  
++ Gym和Trainer的关系为OneToMany  
++ Trainer和Gym的关系为ManyToOne  
 
 数据库表结构为
 + USER(**ID**,AGE,CREATE_AT,MOBILE,NAME,PASSWORD,SEX,SEX,UPDATE_AT)
