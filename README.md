@@ -175,6 +175,14 @@ return ResponseEntity.ok().cacheControl(CacheControl.maxAge(86400, TimeUnit.SECO
 
 完成设置后，浏览器将缓存该数据一天。
 
+在浏览器请求的时候，服务器返回的 Header 中将带有以下头域：
+
+```text
+
+Cache-Control: max-age=86400
+
+```
+
 ## 4.使用 thymeleaf 构建页面
 
 ## 5.集成 Swagger 文档
