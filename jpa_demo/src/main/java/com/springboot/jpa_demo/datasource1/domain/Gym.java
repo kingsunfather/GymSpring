@@ -27,23 +27,18 @@ public class Gym implements Serializable {
     private String location;
     private String phone;
 
-    @ManyToMany(mappedBy = "GymList")
-    private List<User> userList;
-
-    @OneToMany(mappedBy = "gym",cascade= CascadeType.ALL,fetch= FetchType.LAZY)
-    private List<Trainer> trainerList;
-
     @CreatedDate
     private Date createAt;
 
     @LastModifiedDate
     private Date updateAt;
 
-    public Gym(String name, String location, String phone){
-        this.name=name;
-        this.location=location;
-        this.phone=phone;
+    public Gym(String name, String location, String phone) {
+        this.name = name;
+        this.location = location;
+        this.phone = phone;
     }
 
-    public Gym(){}
+    public Gym() {
+    }
 }
