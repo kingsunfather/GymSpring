@@ -1,21 +1,17 @@
 spring:
   datasource:
     primary:
-      url: jdbc:mysql://localhost:3306/spring_study?useSSL=false
+      url: jdbc:mysql://localhost:3306/spring_study?useSSL=false&serverTimezone=GMT%2B8
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
 
-
     secondary:
-      url: jdbc:mysql://localhost:3306/spring_study2?useSSL=false
+      url: jdbc:mysql://localhost:3306/spring_study2?useSSL=false&serverTimezone=GMT%2B8
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
     platform: mysql
-
-
-
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
@@ -37,5 +33,3 @@ spring:
 
 server:
   port: 8080
-
-

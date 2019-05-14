@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - DemoApplication",
+      "request": "launch",
+      "mainClass": "com.example.oauth.DemoApplication"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - JpaDemoApplication",
+      "request": "launch",
+      "mainClass": "com.springboot.jpa_demo.JpaDemoApplication",
+      "projectName": "jpa_demo"
+    }
+  ]
+}
