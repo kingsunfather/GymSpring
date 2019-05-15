@@ -6,6 +6,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,8 +30,8 @@ public class User implements Serializable {
     private String password;
 
     @ManyToMany
-    @JoinTable(name = "user_gym",joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "gym_id"))
+    @JsonManagedReference
+    @JoinTable(name = "user_gym", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "gym_id"))
     private List<Gym> GymList;
 
     @CreatedDate
@@ -37,14 +40,15 @@ public class User implements Serializable {
     @LastModifiedDate
     private Date updateAt;
 
-    public User(String name, String sex, String mobile, int age, String password, List<Gym> gymList){
-        this.name=name;
-        this.sex=sex;
-        this.mobile=mobile;
-        this.age=age;
-        this.password=password;
-        this.GymList=gymList;
+    public User(String name, String sex, String mobile, int age, String password, List<Gym> gymList) {
+        this.name = name;
+        this.sex = sex;
+        this.mobile = mobile;
+        this.age = age;
+        this.password = password;
+        this.GymList = gymList;
     }
 
-    public User(){}
+    public User() {
+    }
 }
