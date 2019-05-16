@@ -1,5 +1,8 @@
 package com.springboot.jpa_demo.datasource1.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,6 +13,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,7 +24,7 @@ import java.util.Date;
 @Setter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
-public class Trainer implements Serializable {
+public class Trainer extends ResourceSupport implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
@@ -40,6 +45,7 @@ public class Trainer implements Serializable {
     @LastModifiedDate
     private Date updateAt;
 
+    @JsonCreator
     public Trainer(String name, String age, String headpic, String introduce, String phone, Gym gym) {
         this.gym = gym;
         this.name = name;
@@ -49,7 +55,14 @@ public class Trainer implements Serializable {
         this.phone = phone;
 
     }
-
     public Trainer() {
+    }
+
+    @JsonIgnore
+    public Link getId() {
+        return this.getLink("self");
+    }
+    public String getName(){
+        return name;
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.io.Serializable;
 import java.util.Date;

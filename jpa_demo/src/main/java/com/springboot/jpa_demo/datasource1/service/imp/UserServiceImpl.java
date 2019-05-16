@@ -84,9 +84,9 @@ public class UserServiceImpl implements UserService {
                 Gym gymInstance = new Gym(String.valueOf(i), location + String.valueOf(i), String.valueOf(phonePrefix + i));
                 Gym gymOK = gymRepository.saveAndFlush(gymInstance);
 
-                //addTrainer
-                Trainer trainerInstance = new Trainer(String.valueOf(i), String.valueOf(i), String.valueOf(i), introduction, String.valueOf(phonePrefix), gymOK);
-                trainerRepository.saveAndFlush(trainerInstance);
+//                //addTrainer
+//                Trainer trainerInstance = new Trainer(String.valueOf(i), String.valueOf(i), String.valueOf(i), introduction, String.valueOf(phonePrefix), gymOK);
+//                trainerRepository.saveAndFlush(trainerInstance);
 
             }
 
