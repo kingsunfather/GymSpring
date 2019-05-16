@@ -26,7 +26,7 @@ public class GymController {
     GymService gymService;
 
     @ApiOperation(value = "获取健身房的所有信息", notes = "从第一个数据源获取健身房的所有信息")
-    @GetMapping("/gym/all")
+    @GetMapping("api/v1/gym/all")
     @Cacheable(key = "targetClass + methodName")
     public ResponseEntity<JSONObject> getAllGym() {
         JSONObject res = new JSONObject();
@@ -35,23 +35,23 @@ public class GymController {
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(86400, TimeUnit.SECONDS)).body(res);
     }
 
-    @PostMapping("/gym/update")
+    @PostMapping("api/v1/gym/update")
     @CachePut(key = "targetClass + methodName")
     public JSONObject updateGym(@RequestBody Gym gym) {
         return gymService.update(gym);
     }
 
-    @PostMapping("/gym/findByNameLike/{name}")
+    @PostMapping("api/v1/gym/findByNameLike/{name}")
     public JSONObject findByNameLike(@PathVariable String name) {
         return gymService.findByNameLike(name);
     }
 
-    @PostMapping("/gym/findByNameContaining/{name}")
+    @PostMapping("api/v1/gym/findByNameContaining/{name}")
     public JSONObject findByNameContaining(@PathVariable String name) {
         return gymService.findByNameContaining(name);
     }
 
-    @PostMapping("/gym/{pageSize}/{pageNum}")
+    @PostMapping("api/v1/gym/{pageSize}/{pageNum}")
     public JSONObject findAll(@PathVariable Integer pageSize, @PathVariable Integer pageNum) {
         JSONObject result = new JSONObject();
         try {
@@ -69,9 +69,9 @@ public class GymController {
         return result;
     }
 
-    @PostMapping("/gym/trainer/{id}")
-    public JSONObject getGymTrainerById(@PathVariable String id) {
-        return gymService.getGymTrainer(id);
-    }
+//    @PostMapping("/gym/trainer/{id}")
+//    public JSONObject getGymTrainerById(@PathVariable String id) {
+//        return gymService.getGymTrainer(id);
+//    }
 
 }

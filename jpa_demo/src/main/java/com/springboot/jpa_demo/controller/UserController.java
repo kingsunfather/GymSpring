@@ -29,19 +29,19 @@ public class UserController {
     @Autowired
     TrainerService trainerService;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public ModelAndView init(){
         ModelAndView model=new ModelAndView("login");
         return model;
     }
 
-    @GetMapping("/register")
+    @GetMapping("api/v1/user/register")
     public ModelAndView register(){
         ModelAndView modelAndView=new ModelAndView("register");
         return modelAndView;
     }
 
-    @PostMapping("/login")
+    @PostMapping("api/v1/user/login")
     public ModelAndView login(int id,String password){
         ModelAndView modelAndView;
         JSONObject jsonObject=userService.login(id,password);
@@ -59,7 +59,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("api/v1/user/add")
     public ModelAndView addUser(User user){
         JSONObject res=userService.addUser(user);
         ModelAndView modelAndView;

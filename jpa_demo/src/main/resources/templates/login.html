@@ -14,7 +14,7 @@
             Login
         </div>
         <div style="margin:15px 30px;">
-            <form method="post" th:action="@{/login}" id="loginform">
+            <form method="post" th:action="@{/api/v1/user/login}" id="loginform">
                 <fieldset>
                     <div>
                         <label>账号:</label>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="buttons">
                         <input id="login" type="submit" value="登陆" tabindex="5">
-                        <input id="register" type="button" onclick="window.location.href='/register'" value="注册">
+                        <input id="register" type="button" onclick="window.location.href='/api/v1/user/register'" value="注册">
                     </div>
                 </fieldset>
             </form>

@@ -12,7 +12,7 @@
                 Register
             </div>
             <div style="margin: 15px 30px;">
-                <form th:action="@{/addUser}" method="post" th:object="${user}">
+                <form th:action="@{/api/v1/user/add}" method="post" th:object="${user}">
                     <fieldset>
                         <div>
                             <label>名字:</label>

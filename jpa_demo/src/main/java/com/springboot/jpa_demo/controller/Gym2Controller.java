@@ -14,7 +14,7 @@ public class Gym2Controller {
     Gym2Service gym2Service;
 
     @ApiOperation(value = "获取健身房的所有信息", notes = "从第二个数据源获取健身房的所有信息")
-    @GetMapping("/allgym2")
+    @GetMapping("/api/v1/gym2/all")
     public JSONObject allGym2(){
         return gym2Service.allGym2();
     }
