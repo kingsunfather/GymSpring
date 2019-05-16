@@ -16,7 +16,7 @@
     -   [3.3 Etag实现](#33Etag实现)
 -   [4.限流](#4限流)
 -   [5.Oauth微服务部分](#5Oauth微服务部分)
--   [6.Hateos实现](#6Hateos实现)
+-   [6.Hateoas实现](#6Hateoas实现)
 
 <!-- /TOC -->
       
@@ -199,15 +199,16 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 ![oauth](docImage/oauth.png)
 
 
-## 6.Hateos实现
+## 6.Hateoas实现
 
-当用户访问固定路径`/` `/user` `/course` `/coach` `gym`时候返回连接：
+当用户访问固定路径 `http://localhost:8080/api/v1/trainer/test/hateoas` 时候返回连接：
 
-![](/docImage/Hateos.png)
+![](/docImage/HateosResponse.png)
 
-返回json类图为：
+通过在Trainer这个实体类继承hateoas.ResourceSupport并且在上面特定路由下面的controller里面增加返回的link与和当前这个trainerinstance的rel来实现Hateoas
 
-![](/docImage/Hateos_1.png)
+        trainerInstance.add(linkTo(methodOn(TrainController.class).getInfor()).withSelfRel());
+        return new ResponseEntity<>(trainerInstance, HttpStatus.OK);
 
 
 
