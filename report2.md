@@ -1,21 +1,24 @@
+<!-- TOC -->
+
 # 第二次作业说明
 
 -   [1.基础要求](#1基础要求)
     -   [1.1 数据库设计](#11数据库设计)
-    -   [1.2 UML 设计类图](#12UML设计类图)
+    -   [1.2 UML设计类图](#12UML设计类图)
     -   [1.3 系统功能](#13系统功能)
--   [2.API 细化要求](#2API细化要求)
+-   [2.API细化要求](#2API细化要求)
     -   [2.1 API版本](#21API版本)
     -   [2.2 API分页](#22API分页)
     -   [2.3 Swagger在线API生成](#23Swagger在线API生成)
--   [3.Cache 细化要求](#3Cache细化要求)
+-   [3.Cache细化要求](#3Cache细化要求)
     -   [3.1 实现缓存加速功能](#31实现缓存加速功能)
     -   [3.2 浏览器协商缓存功能](#32浏览器协商缓存功能)
     -   [3.3 Etag实现](#33Etag实现)
 -   [4.限流](#4限流)
 -   [5.Oauth微服务部分](#5Oauth微服务部分)
--   [6.Hateos实现]（#6Hateos实现）
-      <!-- /TOC -->
+-   [6.Hateos实现](#6Hateos实现)
+
+<!-- /TOC -->
       
 ## 1基础要求
 
@@ -35,6 +38,7 @@
 -   GYM（**ID**,LOCATION,CREATE_AT,NAME,UPDATE_AT,PHONE）
 -   USER_GYM(**USER_ID**,**GYM_ID**)
 -   TRAINER（**ID**,AGE,CREATE_AT,HEADPIC,INTRODUCTION,NAME,PHONE,UPDATE_AT,GYM_ID）
+
 
 ### 1.2UML设计类图
 
@@ -63,14 +67,14 @@ controller 只负责 View 层的操作，负责处理 Http 的 Request 与 Respo
     点击登陆按钮后就会跳转到主页，显示用户在注册的时候所填写的信息，右侧有个课程列表是用户所订阅的课程的简要信息。  
 
 
-## 2API细化要求  
+## 2API细化要求    
 
-### 2.1 API版本
+### 2.1API版本  
 
 api在设计的时候加入了版本的考虑
 ![](docImage/ApiVersion.png)
 
-### 2.2 API分页
+### 2.2API分页  
 
 api 设计时候加入 pageSize 和 pageNum 选项
 
@@ -86,7 +90,7 @@ api 设计时候加入 pageSize 和 pageNum 选项
 
 ![](docImage/postmanTestPageQuery.png)
 
-###  2.3 Swagger在线API生成  
+###  2.3Swagger在线API生成  
 
 + 对Swagger2进行类的配置和修改
 ![](/docImage/SwaggerConfig.png)
@@ -98,9 +102,9 @@ api 设计时候加入 pageSize 和 pageNum 选项
 ![](/docImage/SwaggerDocument.png)
     
     
-## 3Cache 细化要求
+## 3Cache细化要求
 
-### 3.1 实现缓存加速功能
+### 3.1实现缓存加速功能
 
 -   查看体育馆详情
     在函数前添加注解
@@ -115,7 +119,7 @@ api 设计时候加入 pageSize 和 pageNum 选项
     }
 ```
 
-### 3.2 浏览器协商缓存功能
+### 3.2浏览器协商缓存功能
 
 -   查看体育馆列表
 
@@ -140,7 +144,7 @@ Cache-Control: max-age=86400
 
 ```
 
-### 3.3 Etag实现  
+### 3.3Etag实现  
 
 在原有的强制缓存前提下，本阶段新增加了协商缓存的机制。
 
