@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-# 第二次作业说明
+# 第三次作业说明
 
 - [1.基础要求](#1基础要求)
   - [1.1 数据库设计](#11数据库设计)
@@ -211,6 +211,6 @@ public class Producer {
 
 ![rest](docImage/kafka-3.png)
 
-就可以在控制台上看到结果了。
+在控制台上看到预期结果。
 
 ![result](docImage/kafka-4.png)
