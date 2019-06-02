@@ -4,6 +4,12 @@
       "type": "java",
       "name": "CodeLens (Launch) - DemoApplication",
       "request": "launch",
+      "mainClass": "com.bjtu.kafka.DemoApplication"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - DemoApplication",
+      "request": "launch",
       "mainClass": "com.example.oauth.DemoApplication"
     },
     {
