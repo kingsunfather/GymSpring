@@ -38,7 +38,7 @@
 handler 负责 View 层的操作，负责处理 Http 的 Request 与 Response  
 ![](/docImage/handlerDesign.png) . 
 
-** Router 设计**
+**Router 设计**
 三个Router类里面分别增加了三个router bean的实例
 ![](/docImage/routerDesign.png) . 
 
@@ -51,7 +51,10 @@ handler 负责 View 层的操作，负责处理 Http 的 Request 与 Response
 ![](/docImage/repoDesignWebFlux.png) . 
 
 ### 1.5 restful接口设计
-![](/docImage/RestfulAPIWebFlux.png) . 
+![](/docImage/RestfulAPIWebFlux1.png) . 
+![](/docImage/RestfulAPIWebFlux2.png) . 
+![](/docImage/RestfulAPIWebFlux3.png) . 
+
 
 
 ## 2. 持久化数据集成
