@@ -153,17 +153,25 @@ ETag: "f88dd058fe004909615a64f01be66a7"
 示例 ETag 返回如下：
 ![etag](docImage/etag.jpg)
 
-## 4.Kafka 服务器
+## 4.Kafka 消息队列实现
 
-使用 ZooKeeper 管理 Kafka 服务器。
+本次作业使用 Kafka 重构原来的服务，重构完成后，系统结构如下：
+
+![services](docImage/services.png)
+
+经过重构后，系统的消息传输主要通过 Kafka 消息队列实现。同时，多个微服务同时订阅同一个 topic，并使用不同的 partition 设置，实现了消息的解耦合和管理。
+
+![messages](docImage/kafka-5.png)
+
+使用 ZooKeeper 管理 Kafka 服务器。先启动 ZooKeeper，过程如下：
 
 ![zookeeper](docImage/kafka-1.png)
 
-启动 Kafka
+再启动 Kafka，此时 Kafka 即可被 ZooKeeper 识别，过程如下：
 
 ![kafka](docImage/kafka-2.png)
 
-创建 Kafka Producer 以及 Consumer
+创建 Kafka Producer 以及 Consumer，并改写原有的微服务之间的操作
 
 ```java
 package com.bjtu.kafka.services;
@@ -211,6 +219,10 @@ public class Producer {
 
 ![rest](docImage/kafka-3.png)
 
-在控制台上看到预期结果。
+在控制台上看到预期结果。此时 Kafka 队列新增消息，可以在控制台看到该消息。
 
 ![result](docImage/kafka-4.png)
+
+根据以上的思路，我们改写了原有的部分服务，从而让系统之间可以使用高效的消息分发机制，而不需要写入到数据库中。
+
+![improvement](docImage/kafka-6.png)

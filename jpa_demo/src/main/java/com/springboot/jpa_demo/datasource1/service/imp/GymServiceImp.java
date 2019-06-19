@@ -24,56 +24,70 @@ public class GymServiceImp implements GymService {
         return gymRepository.findAll();
     }
 
-    @Override
-    public JSONObject update(Gym gym){
-        JSONObject res=new JSONObject();
-        int id=gym.getId();
-        Gym valid=gymRepository.findById(id);
-        if(valid!=null){
+    @KafkaListener(topics = "updateGym", groupId = "group_id")
+    public void consumeGymUpdate(Gym gym) {
+        JSONObject res = new JSONObject();
+        int id = gym.getId();
+        Gym valid = gymRepository.findById(id);
+        if (valid != null) {
             gymRepository.save(gym);
-            res.put("code",200);
-        }else{
-            res.put("code",204);
-            res.put("message","该gym不存在");
+            res.put("code", 200);
+        } else {
+            res.put("code", 204);
+            res.put("message", "该gym不存在");
         }
         return res;
     }
 
     @Override
-    public JSONObject findByIdOrName(String id,String name){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.findByIdOrName(id,name));
+    public JSONObject update(Gym gym) {
+        JSONObject res = new JSONObject();
+        int id = gym.getId();
+        Gym valid = gymRepository.findById(id);
+        if (valid != null) {
+            gymRepository.save(gym);
+            res.put("code", 200);
+        } else {
+            res.put("code", 204);
+            res.put("message", "该gym不存在");
+        }
         return res;
     }
 
     @Override
-    public JSONObject findByNameLike(String name){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.findByNameLike("%"+name+"%"));
+    public JSONObject findByIdOrName(String id, String name) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.findByIdOrName(id, name));
         return res;
     }
 
     @Override
-    public JSONObject findByNameContaining(String name){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.findByNameContaining(name));
+    public JSONObject findByNameLike(String name) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.findByNameLike("%" + name + "%"));
         return res;
     }
 
     @Override
-    public JSONObject findByNameIn(Collection name){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.findByNameIn(name));
+    public JSONObject findByNameContaining(String name) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.findByNameContaining(name));
         return res;
     }
 
     @Override
-    public JSONObject findAll(Pageable pageable){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.findAll(pageable));
+    public JSONObject findByNameIn(Collection name) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.findByNameIn(name));
         return res;
     }
 
+    @Override
+    public JSONObject findAll(Pageable pageable) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.findAll(pageable));
+        return res;
+    }
 
     /**
      *
@@ -81,21 +95,20 @@ public class GymServiceImp implements GymService {
      * @return 根据gym的ID联表查询该gym的所有trainer
      */
     @Override
-    public JSONObject getGymTrainer(String id){
-        JSONObject res=new JSONObject();
-        res.put("data",gymRepository.getGymTrainer(id));
+    public JSONObject getGymTrainer(String id) {
+        JSONObject res = new JSONObject();
+        res.put("data", gymRepository.getGymTrainer(id));
         return res;
     }
 
-
     @Override
     public JSONObject addGym(Gym gym) {
-        JSONObject res=new JSONObject();
-        Gym gym1 =gymRepository.save(gym);
+        JSONObject res = new JSONObject();
+        Gym gym1 = gymRepository.save(gym);
 
-        res.put("data",gym1);
+        res.put("data", gym1);
         res.put("code", ConstantVar.SUCCESSFUL_CODE);
-        res.put("message",ConstantVar.SUCCESSFUL_MESSAGE);
+        res.put("message", ConstantVar.SUCCESSFUL_MESSAGE);
         return res;
 
     }

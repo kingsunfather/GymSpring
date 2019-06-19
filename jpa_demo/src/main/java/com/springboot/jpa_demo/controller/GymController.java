@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import java.util.concurrent.TimeUnit;
+import org.springframework.kafka.core.KafkaTemplate;
 
 @RestController
 @CacheConfig(cacheNames = { "gymCache" })
@@ -35,9 +36,14 @@ public class GymController {
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(86400, TimeUnit.SECONDS)).body(res);
     }
 
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
     @PostMapping("api/v1/gym/update")
     @CachePut(key = "targetClass + methodName")
     public JSONObject updateGym(@RequestBody Gym gym) {
+        // 使用 Kafka 改写部分
+        this.kafkaTemplate.send("updateGym", message);
         return gymService.update(gym);
     }
 
@@ -69,9 +75,9 @@ public class GymController {
         return result;
     }
 
-//    @PostMapping("/gym/trainer/{id}")
-//    public JSONObject getGymTrainerById(@PathVariable String id) {
-//        return gymService.getGymTrainer(id);
-//    }
+    // @PostMapping("/gym/trainer/{id}")
+    // public JSONObject getGymTrainerById(@PathVariable String id) {
+    // return gymService.getGymTrainer(id);
+    // }
 
 }
