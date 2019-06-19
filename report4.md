@@ -61,7 +61,7 @@ handler 负责 View 层的操作，负责处理 Http 的 Request 与 Response
 
 
 ### 2.1 添加依赖
-在pom.xml里面加入对MongoDB的支持
+在pom.xml里面加入对内存形的MongoDB支持
     <dependency>
           <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -69,7 +69,6 @@ handler 负责 View 层的操作，负责处理 Http 的 Request 与 Response
 
 在项目里面增加MongoDB的配置
 
-spring.data.mongodb.uri=mongodb://localhost:27017/springboot-db
 spring.data.mongodb.uri=mongodb://name:pass@localhost:27017/dbname
 
 ### 2.2 Repo的构建
@@ -81,8 +80,8 @@ spring.data.mongodb.uri=mongodb://name:pass@localhost:27017/dbname
 
 ## 4. postman测试截图
 通过Postman先向GymRouter里面的/gym发送请求，增加一个gym，服务器收到如下图
-![](/docImage/user_add.png) 
+![](/docImage/user_get.png) 
 
 然后通过Postman再向GymRouter里面的/gyms进行查询，放回的消息如下
-![](/docImage/user_get.png) 
+![](/docImage/user_add.png) 
 
